@@ -1,0 +1,56 @@
+tap "caskroom/cask"
+tap "caskroom/fonts"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/versions"
+
+brew "git"
+brew "carthage"
+brew "gradle@2.14"
+brew "heroku"
+brew "mas"
+brew "postgresql"
+brew "ruby"
+brew "tmux"
+brew "vim"
+brew "watchman"
+brew "yarn"
+brew "zsh"
+brew "zsh-completions"
+
+cask "1password-cli"
+cask "atom"
+cask "docker"
+cask "dropbox"
+cask "gitup"
+cask "google-chrome"
+cask "hipchat"
+cask "postman"
+cask "sketch"
+cask "skype"
+cask "subler"
+cask "transmit"
+
+mas "1Password", id: 443987910
+mas "Airmail 3", id: 918858936
+mas "CARROT Weather - Talking Forecast Robot", id: 993487541
+mas "Clear", id: 504544917
+mas "Deckset", id: 847496013
+mas "Pixelmator", id: 407963104
+mas "The Unarchiver", id: 425424353
+mas "Tweetbot", id: 557168941
+
+# Xcode dependent stuff
+mas "Xcode", id: 497799835
+brew "swiftlint"
+
+# Java dependent stuff
+cask "java"
+cask "android-sdk"
+cask "android-studio"
+brew "maven"
+
+# XQuartz dependent stuff
+cask "xquartz"
+brew "wine"
+brew "winetricks"

@@ -1,0 +1,10 @@
+"*":
+  core:
+    telemetryConsent: "limited"
+  editor:
+    fontSize: 20
+  "exception-reporting":
+    userId: "a48eb8be-4424-4a02-ae8c-d07096aafa88"
+  "linter-ui-default": {}
+  welcome:
+    showOnStartup: false
