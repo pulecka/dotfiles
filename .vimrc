@@ -6,10 +6,15 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'octref/RootIgnore'
 
+Plug 'vim-airline/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 
 Plug 'sheerun/vim-polyglot'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'w0rp/ale'
+
+Plug 'flowtype/vim-flow'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -27,7 +32,13 @@ let g:NERDTreeQuitOnOpen = 1
 let NERDTreeRespectWildIgnore=1
 let NERDTreeShowHidden=1
 
-let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+" show ale linter messages in airline status bar
+let g:airline#extensions#ale#enabled = 1
+
+" only use flow plugin for autocompletion since linting is provided by ale
+let g:flow#enable = 0
+
+let g:pencil#wrapModeDefault = 'soft'
 
 noremap <C-n> :NERDTreeToggle<CR>
 
@@ -44,7 +55,7 @@ function! s:goyo_enter()
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
   Limelight
 endfunction
-		     
+
 function! s:goyo_leave()
   " Quit Vim if this is the only remaining buffer
   if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
@@ -66,4 +77,3 @@ autocmd VimEnter *
   \| endif
 
 au Filetype markdown Goyo 80x90%
- 
