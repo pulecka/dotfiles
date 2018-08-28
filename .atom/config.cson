@@ -1,18 +1,10 @@
 "*":
   Zen:
     softWrap: true
-  "atom-beautify":
-    general:
-      _analyticsUserId: "38aab28a-7cb5-4bc3-a892-956a257172ae"
   core:
-    telemetryConsent: "limited"
+    telemetryConsent: "no"
   editor:
-    fontSize: 21
+    fontSize: 23
     showLineNumbers: false
-  "exception-reporting":
-    userId: "a48eb8be-4424-4a02-ae8c-d07096aafa88"
-  "language-babel":
-    emmetCSSAutocomplete: true
-  "linter-ui-default": {}
   welcome:
     showOnStartup: false
