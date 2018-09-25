@@ -4,7 +4,7 @@
   core:
     telemetryConsent: "no"
   editor:
-    fontSize: 23
+    fontSize: 24
     showLineNumbers: false
   welcome:
     showOnStartup: false
