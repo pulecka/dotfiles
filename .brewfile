@@ -2,15 +2,17 @@ tap "caskroom/cask"
 tap "caskroom/fonts"
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "homebrew/versions"
 
 brew "git"
-brew "carthage"
+brew "flow"
+brew "fzf"
 brew "heroku"
 brew "mas"
 brew "postgresql"
 brew "ruby"
+brew "the_silver_searcher"
 brew "tmux"
+brew "typescript"
 brew "vim"
 brew "watchman"
 brew "yarn"
@@ -31,20 +33,22 @@ cask "setapp"
 cask "sketch"
 cask "skype"
 cask "slack"
-cask "subler"
 cask "transmit"
+cask "webex-teams"
 
 mas "1Password", id: 443987910
 mas "Airmail 3", id: 918858936
 mas "CARROT Weather - Talking Forecast Robot", id: 993487541
 mas "Pixelmator", id: 407963104
-mas "Reeder" id: 880001334
+mas "Reeder", id: 880001334
 mas "The Unarchiver", id: 425424353
 
 # Xcode dependent stuff
 mas "Xcode", id: 497799835
+brew "carthage"
 brew "swiftlint"
 
 # Java dependent stuff
 cask "java"
+cask "java8"
 brew "maven"

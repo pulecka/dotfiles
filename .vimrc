@@ -1,79 +1,45 @@
+" Dependencies
+
 call plug#begin('~/.vim/bundle')
 
-Plug 'sickill/vim-monokai'
+Plug 'editorconfig/editorconfig-vim'
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'octref/RootIgnore'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+Plug 'tpope/vim-vinegar'
 
 Plug 'vim-airline/vim-airline'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 
-Plug 'sheerun/vim-polyglot'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'w0rp/ale'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
-Plug 'flowtype/vim-flow'
+Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'reedes/vim-pencil'
 
+Plug 'jreybert/vimagit'
+
 call plug#end()
 
+" UI
+
+color dracula
 syntax on
 
-colo monokai
-
 set backspace=2
-
-let g:NERDTreeQuitOnOpen = 1
-let NERDTreeRespectWildIgnore=1
-let NERDTreeShowHidden=1
-
-" show ale linter messages in airline status bar
-let g:airline#extensions#ale#enabled = 1
-
-" only use flow plugin for autocompletion since linting is provided by ale
-let g:flow#enable = 0
+set number relativenumber
+set clipboard=unnamed
 
 let g:pencil#wrapModeDefault = 'soft'
 
-noremap <C-n> :NERDTreeToggle<CR>
+" Mapping
 
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text         call pencil#init()
-augroup END
+inoremap <silent> <c-p> <c-\><c-O>:ALEComplete<cr>
 
-function! s:goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-  Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
-
-au Filetype markdown Goyo 80x90%
+nnoremap <c-p> :GFiles<cr>
+nnoremap <c-b> :Buffers<cr>
