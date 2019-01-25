@@ -35,8 +35,6 @@ set backspace=2
 set number relativenumber
 set clipboard=unnamed
 
-let g:pencil#wrapModeDefault = 'soft'
-
 " Mapping
 
 inoremap <silent> <c-p> <c-\><c-O>:ALEComplete<cr>
