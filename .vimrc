@@ -41,5 +41,14 @@ let g:pencil#wrapModeDefault = 'soft'
 
 inoremap <silent> <c-p> <c-\><c-O>:ALEComplete<cr>
 
+"   Navigation
+
 nnoremap <c-p> :GFiles<cr>
-nnoremap <c-b> :Buffers<cr>
+
+"   Buffers
+
+nnoremap <leader>bb :Buffers<cr>
+nnoremap <leader>bp :bp<cr>
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bg :e#<cr>
+
