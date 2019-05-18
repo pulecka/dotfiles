@@ -6,5 +6,4 @@ source ~/.zsh/completions.zsh
 export SHELL=/bin/zsh
 export EDITOR=vim
 
-export ANDROID_HOME=/Users/pulecka/Library/Android/sdk/
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=$PATH:/usr/local/lib/ruby/gems/2.6.0/bin
