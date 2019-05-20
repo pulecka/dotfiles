@@ -1,3 +1,6 @@
+# Install cli tools
+xcode-select --install
+
 # Install brew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
