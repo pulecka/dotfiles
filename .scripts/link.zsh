@@ -12,5 +12,3 @@ ln -sv "/users/pulecka/developer/dotfiles/.zshrc" ~
 ln -sv "/users/pulecka/developer/dotfiles/.vim" ~
 ln -sv "/users/pulecka/developer/dotfiles/.zsh" ~
 
-# Reload current shell profile
-source ~/.zshrc
