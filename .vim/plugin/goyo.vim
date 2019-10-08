@@ -3,6 +3,7 @@ function! s:goyo_enter()
   let b:quitting_bang = 0
   autocmd QuitPre <buffer> let b:quitting = 1
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+  set showmode
   Limelight
 endfunction
 
@@ -15,6 +16,7 @@ function! s:goyo_leave()
       qa
     endif
   endif
+  set noshowmode
   Limelight!
 endfunction
 
