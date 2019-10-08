@@ -2,3 +2,5 @@
 [user]
 	name = Martin Obert
 	email = me@pulecka.com
+[alias]
+	logadog = log --all --decorate --oneline --graph
