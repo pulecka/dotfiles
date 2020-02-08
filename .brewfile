@@ -6,23 +6,22 @@ tap "homebrew/core"
 brew "git"
 brew "fzf"
 brew "mas"
-brew "postgresql"
-brew "ruby"
 brew "the_silver_searcher"
 brew "tmux"
+brew "tmuxinator"
 brew "vim"
-brew "yarn"
 brew "zsh"
 brew "zsh-completions"
 
+cask "1password"
 cask "1password-cli"
 cask "artpip"
 cask "deckset"
-cask "dropbox"
 cask "sketch"
 cask "transmit"
+cask "vlc"
 
-mas "1Password", id: 443987910
 mas "CARROT Weather - Talking Forecast Robot", id: 993487541
 mas "Pixelmator", id: 407963104
+mas "Spark", id: 1176895641
 
