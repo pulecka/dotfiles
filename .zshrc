@@ -8,3 +8,5 @@ export EDITOR=vim
 
 export PATH="/usr/local/bin:$PATH"
 export PATH=$PATH:/usr/local/lib/ruby/gems/2.6.0/bin
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
