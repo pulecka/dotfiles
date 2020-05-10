@@ -4,6 +4,9 @@ source ~/.config/nvim/plug.vim
 " UI
 source ~/.config/nvim/ui.vim
 
+" Writing
+source ~/.config/nvim/writing.vim
+
 " LSP
 luafile ~/.config/nvim/lua/lsp.lua
 
@@ -17,11 +20,18 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-"   Buffers
+"   Navigation
 nnoremap <leader><leader> :Buffers<cr>
 nnoremap <leader>b :e#<cr>
+nnoremap <c-space> :GFiles<cr>
+nnoremap <c-p> :Commands<cr>
+nnoremap <leader>q :copen<cr>
+nnoremap <leader>l :lopen<cr>
+nnoremap <leader>z :Goyo<cr>
+nnoremap [j <c-o>
+nnoremap ]j <c-i>
 
-"    LSP
+"   LSP
 nnoremap <silent> gd	<cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.type_definition()<CR>

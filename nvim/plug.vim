@@ -7,13 +7,12 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Navigation
 Plug 'tpope/vim-vinegar'
-
-" Fuzzy finder
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Editor
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'

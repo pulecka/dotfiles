@@ -1,14 +1,14 @@
 local configs = require 'nvim_lsp/configs'
 local util = require 'nvim_lsp/util'
 
-local server_name = 'tsserver'
+local server_name = 'tsserver2'
 
 configs[server_name] = {
   default_config = util.utf8_config {
     cmd = {'javascript-typescript-stdio'};
     filetypes = {'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx'};
-    root_dir = util.root_pattern('package.json');
-    log_level = vim.lsp.protocol.MessageType.Debug;
+    root_dir = util.root_pattern('yarn.lock', 'package.json');
+    log_level = vim.lsp.protocol.MessageType.Info;
     settings = {};
   };
   docs = {
