@@ -6,7 +6,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Navigation
-Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-dirvish'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
