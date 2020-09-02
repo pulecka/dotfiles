@@ -1,5 +1,5 @@
 alias git=/usr/local/bin/git
-alias vim=/usr/local/bin/vim
+alias vim=/usr/local/bin/nvim
 
 alias update="zsh ~/.scripts/update.zsh"
 
