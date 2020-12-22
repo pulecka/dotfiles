@@ -1,13 +1,9 @@
-# Install cli tools
-xcode-select --install
+# Install Brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install brew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# Install brew package (including apps)
+# Install Brew package (including apps)
 brew bundle --file=~/.brewfile
 
-# Configure vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+# Configure Vim Plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-

@@ -1,7 +1,7 @@
-tap "caskroom/cask"
-tap "caskroom/fonts"
 tap "homebrew/bundle"
 tap "homebrew/core"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 
 brew "git"
 brew "fzf"
@@ -14,7 +14,6 @@ brew "the_silver_searcher"
 brew "tmux"
 brew "tmuxinator"
 brew "tree-sitter"
-brew "vim"
 brew "zsh"
 brew "zsh-completions"
 

@@ -8,10 +8,10 @@ source ~/.config/nvim/ui.vim
 source ~/.config/nvim/writing.vim
 
 " LSP
-luafile ~/.config/nvim/lua/lsp.lua
+" luafile ~/.config/nvim/lua/lsp.lua
 
 " Treesitter
-luafile ~/.config/nvim/lua/treesitter.lua
+" luafile ~/.config/nvim/lua/treesitter.lua
 
 " Mapping
 let mapleader="\<Space>"
@@ -38,11 +38,11 @@ nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 
 "   LSP
-nnoremap <silent> gd	<cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" nnoremap <silent> gd	<cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 au! BufNewFile,BufRead *.svelte set ft=html.svelte
