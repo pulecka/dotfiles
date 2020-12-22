@@ -1,6 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Martin Obert
-	email = me@pulecka.com
+	email = martin@pulecka.dev
 [alias]
 	logadog = log --all --decorate --oneline --graph
+    pushup = push --set-upstream origin HEAD

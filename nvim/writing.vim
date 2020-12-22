@@ -7,7 +7,6 @@ function! s:goyo_enter()
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
   set showmode
   Limelight
-  Pencil
 endfunction
 
 function! s:goyo_leave()
@@ -21,8 +20,13 @@ function! s:goyo_leave()
   endif
   set noshowmode
   Limelight!
-  NoPencil
 endfunction
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()

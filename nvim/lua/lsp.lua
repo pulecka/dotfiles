@@ -1,7 +1,8 @@
-local nvim_lsp = require 'nvim_lsp'
+local lspconfig = require 'lspconfig'
 
 require 'lsp.callbacks'
 require 'lsp.svelteserver'
 
-nvim_lsp.tsserver.setup{}
-nvim_lsp.svelteserver.setup{}
+lspconfig.sourcekit.setup{}
+lspconfig.tsserver.setup{}
+lspconfig.svelteserver.setup{}

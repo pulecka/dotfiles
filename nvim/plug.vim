@@ -17,11 +17,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
+Plug 'tpope/vim-dispatch'
+
 " Language support
+Plug 'neovim/nvim-lsp'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown'
-Plug 'pangloss/vim-javascript'
-Plug 'neovim/nvim-lsp'
+Plug 'keith/swift.vim'
 
 " Writing
 Plug 'junegunn/goyo.vim'

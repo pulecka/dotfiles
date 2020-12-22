@@ -6,9 +6,14 @@ tap "homebrew/core"
 brew "git"
 brew "fzf"
 brew "mas"
+brew "neovim"
+brew "node"
+brew "node@12"
+brew "pandoc"
 brew "the_silver_searcher"
 brew "tmux"
 brew "tmuxinator"
+brew "tree-sitter"
 brew "vim"
 brew "zsh"
 brew "zsh-completions"
@@ -16,12 +21,19 @@ brew "zsh-completions"
 cask "1password"
 cask "1password-cli"
 cask "artpip"
+cask "basictex"
 cask "deckset"
+cask "dropbox"
+cask "firefox"
+cask "little-snitch"
 cask "sketch"
+cask "slack"
 cask "transmit"
 cask "vlc"
 
-mas "CARROT Weather - Talking Forecast Robot", id: 993487541
-mas "Pixelmator", id: 407963104
+mas "Fantastical", id: 975937182
+mas "GoodNotes", id: 1444383602
+mas "Magic Lasso", id: 1198047227
+mas "Pixelmator Pro", id: 1289583905
 mas "Spark", id: 1176895641
-
+mas "The Unarchiver", id: 425424353

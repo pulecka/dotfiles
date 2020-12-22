@@ -22,3 +22,9 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+" Splits
+set splitbelow
+set splitright
+
+let g:dirvish_mode = ':sort ,^.*[\/],'
