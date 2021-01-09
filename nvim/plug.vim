@@ -20,8 +20,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 
 " Language support
-" Plug 'neovim/nvim-lsp'
-" Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lsp'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown'
 Plug 'keith/swift.vim'

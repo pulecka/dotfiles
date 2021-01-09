@@ -1,7 +1,7 @@
 local nvim_treesitter = require 'nvim-treesitter.configs'
 
 nvim_treesitter.setup {
-  ensure_installed = { 'markdown', 'javascript', 'typescript', 'tsx', 'yaml', 'json', 'html', 'css', 'lua' },
+  ensure_installed = { 'javascript', 'typescript', 'tsx', 'yaml', 'json', 'html', 'css', 'lua' },
   highlight = {
     enable = true,
   },
