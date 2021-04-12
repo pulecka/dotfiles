@@ -69,13 +69,13 @@ local function location_callback(_, method, result)
 end
 
 do
-  lsp.callbacks['textDocument/documentSymbol'] = symbol_callback
-  lsp.callbacks['workspace/symbol'] = symbol_callback
+  lsp.handlers['textDocument/documentSymbol'] = symbol_callback
+  lsp.handlers['workspace/symbol'] = symbol_callback
 
-  lsp.callbacks['textDocument/references'] = references_callback
+  lsp.handlers['textDocument/references'] = references_callback
 
-  lsp.callbacks['textDocument/declaration'] = location_callback
-  lsp.callbacks['textDocument/definition'] = location_callback
-  lsp.callbacks['textDocument/typeDefinition'] = location_callback
-  lsp.callbacks['textDocument/implementation'] = location_callback
+  lsp.handlers['textDocument/declaration'] = location_callback
+  lsp.handlers['textDocument/definition'] = location_callback
+  lsp.handlers['textDocument/typeDefinition'] = location_callback
+  lsp.handlers['textDocument/implementation'] = location_callback
 end

@@ -28,3 +28,7 @@ set splitbelow
 set splitright
 
 let g:dirvish_mode = ':sort ,^.*[\/],'
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevelstart=10

@@ -4,7 +4,7 @@ local util = require 'lspconfig/util'
 local server_name = 'svelteserver'
 
 configs[server_name] = {
-  default_config = util.utf8_config {
+  default_config = {
     cmd = {'svelteserver', '--stdio'};
     filetypes = {'svelte', 'html.svelte'};
     root_dir = util.root_pattern('yarn.lock', 'package.json');
