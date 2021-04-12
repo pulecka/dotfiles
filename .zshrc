@@ -3,6 +3,8 @@ source ~/.zsh/prompt.zsh
 source ~/.zsh/fzf.zsh
 source ~/.zsh/completions.zsh
 
+setopt HIST_IGNORE_SPACE
+
 export SHELL=/usr/local/bin/zsh
 export EDITOR=nvim
 
