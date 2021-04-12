@@ -1,7 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
 tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 
 brew "git"
 brew "fzf"
@@ -12,7 +11,6 @@ brew "node@12"
 brew "pandoc"
 brew "the_silver_searcher"
 brew "tmux"
-brew "tmuxinator"
 brew "tree-sitter"
 brew "zsh"
 brew "zsh-completions"
@@ -36,3 +34,4 @@ mas "Magic Lasso", id: 1198047227
 mas "Pixelmator Pro", id: 1289583905
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
+mas "Things", id: 904280696

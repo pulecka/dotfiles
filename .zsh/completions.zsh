@@ -1,6 +1,6 @@
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit
-compinit
+compinit -i
 
 zstyle ':completion:*' menu select
 
