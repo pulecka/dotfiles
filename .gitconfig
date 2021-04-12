@@ -5,3 +5,4 @@
 [alias]
 	logadog = log --all --decorate --oneline --graph
     pushup = push --set-upstream origin HEAD
+    please = push --force-with-lease
