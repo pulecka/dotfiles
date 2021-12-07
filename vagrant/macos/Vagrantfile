@@ -1,0 +1,15 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "__BOX__"
+
+  config.vm.provider :parallels do |vb|
+    vb.name = "__NAME__"
+  end
+
+  config.vm.provision "file", source: "~/Developer/dotfiles/git", destination: ".config/git"
+  config.vm.provision "file", source: "~/Developer/dotfiles/tmux", destination: ".config/tmux"
+  config.vm.provision "file", source: "~/Developer/dotfiles/nvim", destination: ".config/nvim"
+  config.vm.provision "file", source: "~/Developer/dotfiles/fish/config.fish", destination: ".config/fish"
+  config.vm.provision "file", source: "~/Developer/dotfiles/fish/functions", destination: ".config/fish/functions"
+
+  config.vm.provision "shell", path: "~/Developer/dotfiles/vagrant/macos/setup.sh", privileged: false
+end
