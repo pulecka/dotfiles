@@ -24,14 +24,9 @@ tmux send-keys -t $PROJECT_NAME:source "git status" Enter
 
 # 3. Dev
 tmux new-window -t $PROJECT_NAME -n dev -c $PROJECT_HOME
-tmux send-keys -t $PROJECT_NAME:dev " print -s yarn dev" Enter
-tmux send-keys -t $PROJECT_NAME:dev "C-l"
 
 # 4. Build
 tmux new-window -t $PROJECT_NAME -n build -c "$PROJECT_HOME"
-tmux send-keys -t $PROJECT_NAME:build " print -s yarn lint" Enter
-tmux send-keys -t $PROJECT_NAME:build " print -s yarn build" Enter
-tmux send-keys -t $PROJECT_NAME:build "C-l"
 
 # 5. Notes
 tmux new-window -t $PROJECT_NAME -n notes -c $PROJECT_ROOT

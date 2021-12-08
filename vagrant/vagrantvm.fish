@@ -1,9 +1,9 @@
-function vm
+function vagrantvm
   set dir ~/Developer
   set system 'macos'
-  set macos_box 'bento/macos-12'
+  set macos_box 'pulecka/macos-12'
   set ubuntu_box 'bento/ubuntu-21.04'
-  set templates ~/Developer/dotfiles/vagrant
+  set templates $XDG_CONFIG_HOME/vagrant/templates
 
   function _create_vm -a name dir system box templates
     mkdir -p $dir/$name

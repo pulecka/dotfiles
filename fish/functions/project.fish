@@ -1,6 +1,6 @@
 function project
   set dir ~/Developer
-  set template ~/Developer/dotfiles/vagrant/project.tmux
+  set template $XDG_CONFIG_HOME/tmux/templates/project.tmux
 
   function _create_project -a name dir repo template
     echo "$name $dir $repo"
