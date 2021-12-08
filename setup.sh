@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Set up XDG folders
 XDG_CONFIG_HOME=~/.config
 XDG_CACHE_HOME=~/.cache
@@ -7,8 +9,6 @@ mkdir -p $XDG_CONFIG_HOME
 mkdir -p $XDG_CACHE_HOME
 mkdir -p $XDG_DATA_HOME
 
-NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/config
-NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 VAGRANT_HOME=$XDG_DATA_HOME/vagrant
 ICLOUD_HOME=~/Library/Mobile\ Documents/com\~apple\~CloudDocs
 BOX_HOME=~/Library/CloudStorage/Box-Box
@@ -30,13 +30,14 @@ pbcopy < ~/.ssh/id_ed25519.pub
 read -p "Copied public key (id_ed25519.pub) into clipboard. Continue after adding key to Github account." x
 
 # Install Xcode CLI tools
-xcode-select --install
-xcode_path=$(xcode-select --print-path)
-while [ ! -z "$xcode_path" ]
+$(xcode-select --install > /dev/null 2>&1)
+xcode_status=$(xcode-select -p > /dev/null 2>&1; echo $?)
+echo "Waiting for Xcode CLI tools installation\c"
+while [ ! $xcode_status == 0 ]
 do
   sleep 10
-  echo $xcode_path
-  xcode_path=$(xcode-select --print-path)
+  xcode_status=$(xcode-select -p > /dev/null 2>&1; echo $?)
+  echo ".\c"
 done
 
 # Install Brew
@@ -76,8 +77,11 @@ ln -sv "$ICLOUD_HOME" $XDG_DATA_HOME/iCloud
 ln -sv "$BOX_HOME" $XDG_DATA_HOME/Box
 
 # Install Neovim plugins & Language servers
+npm_config_userconfig=$XDG_CONFIG_HOME/npm/config
+npm_config_cache=$XDG_CACHE_HOME/npm
+
 corepack enable
-npm install --global typescript typescript-language-server svelte-language-server
+npm install --global typescript typescript-language-server svelte-language-server --userconfig $npm_config_userconfig --cache $npm_config_cache
 
 curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -85,11 +89,10 @@ curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs \
 nvim --headless -u "$XDG_CONFIG_HOME/nvim/lua/plugins.lua" -c "PlugInstall" -c "qall"
 
 # Install Dracula terminal theme
-mkdir -p $XDG_DATA_HOME/terminal
-curl -fLo $XDG_DATA_HOME/terminal/Dracula.terminal \
+curl -fLo $XDG_CONFIG_HOME/terminal/Dracula.terminal --create-dirs \
        https://raw.githubusercontent.com/dracula/terminal-app/master/Dracula.terminal
 
-curl -fLo $XDG_CONFIG_HOME/fish/conf.d/dracula.fish \
+curl -fLo $XDG_CONFIG_HOME/fish/conf.d/dracula.fish --create-dirs \
        https://raw.githubusercontent.com/dracula/fish/master/conf.d/dracula.fish
 
 # Switch to Fish shell
@@ -99,11 +102,10 @@ echo "set -U XDG_CONFIG_HOME $XDG_CONFIG_HOME" | /usr/local/bin/fish
 echo "set -U XDG_CACHE_HOME $XDG_CACHE_HOME" | /usr/local/bin/fish
 echo "set -U XDG_DATA_HOME $XDG_DATA_HOME" | /usr/local/bin/fish
 
-echo "set -U NPM_CONFIG_USERCONFIG $NPM_CONFIG_USERCONFIG" | /usr/local/bin/fish
-echo "set -U NPM_CONFIG_CACHE $NPM_CONFIG_CACHE" | /usr/local/bin/fish
+echo "set -U npm_config_userconfig $npm_config_userconfig" | /usr/local/bin/fish
+echo "set -U npm_config_cache $npm_config_cache" | /usr/local/bin/fish
 echo "set -U VAGRANT_HOME $VAGRANT_HOME" | /usr/local/bin/fish
 echo "set -U ICLOUD_HOME $ICLOUD_HOME" | /usr/local/bin/fish
 echo "set -U BOX_HOME $BOX_HOME" | /usr/local/bin/fish
 
-open $XDG_DATA_HOME/terminal/Dracula.terminal
-
+open $XDG_CONFIG_HOME/terminal/Dracula.terminal

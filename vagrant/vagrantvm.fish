@@ -1,7 +1,7 @@
 function vagrantvm
   set dir ~/Developer
   set system 'macos'
-  set macos_box 'pulecka/macos-12'
+  set macos_box 'pulecka/macos12'
   set ubuntu_box 'bento/ubuntu-21.04'
   set templates $XDG_CONFIG_HOME/vagrant/templates
 
