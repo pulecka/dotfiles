@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Setting up new Mac machine..."
+
 # Set up XDG folders
 XDG_CONFIG_HOME=~/.config
 XDG_CACHE_HOME=~/.cache
@@ -13,7 +15,12 @@ VAGRANT_HOME=$XDG_DATA_HOME/vagrant
 ICLOUD_HOME=~/Library/Mobile\ Documents/com\~apple\~CloudDocs
 BOX_HOME=~/Library/CloudStorage/Box-Box
 
+# Install Xcode CLI tools
+echo "Starting Xcode CLI tools installation..."
+$(xcode-select --install > /dev/null 2>&1)
+
 # Configure SSH
+echo "Configuring SSH..."
 mkdir -p ~/.ssh
 ssh-keygen -t ed25519 -C "martin@pulecka.dev"
 
@@ -29,8 +36,7 @@ ssh-add -K ~/.ssh/id_ed25519
 pbcopy < ~/.ssh/id_ed25519.pub
 read -p "Copied public key (id_ed25519.pub) into clipboard. Continue after adding key to Github account." x
 
-# Install Xcode CLI tools
-$(xcode-select --install > /dev/null 2>&1)
+# Wait for Xcode CLI tools installation
 xcode_status=$(xcode-select -p > /dev/null 2>&1; echo $?)
 echo "Waiting for Xcode CLI tools installation\c"
 while [ ! $xcode_status == 0 ]
@@ -41,20 +47,25 @@ do
 done
 
 # Install Brew
+echo "Installing Homebrew package manager..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install Brew packages
+echo "Installing Homebrew packages..."
 brew install fish git tmux neovim fzf ripgrep node corepack vagrant
 
 # Install Brew apps
+echo "Installing Homebrew apps..."
 brew install --cask 1password artpip box-drive cleanmymac firefox little-snitch parallels slack vlc
 
-# Checkout Dotfiles
+# Checkout dotfiles
+echo "Checking out dotfile configuration repo..."
 mkdir -p ~/Developer
 cd ~/Developer
 git clone git@github.com:pulecka/dotfiles.git
 
-# Link Dotfiles
+# Link dotfiles
+echo "Setting up dotfile configurations..."
 mkdir -p $XDG_CONFIG_HOME/git
 ln -sv ~/Developer/dotfiles/git/config $XDG_CONFIG_HOME/git/config
 
@@ -77,9 +88,11 @@ ln -sv "$ICLOUD_HOME" $XDG_DATA_HOME/iCloud
 ln -sv "$BOX_HOME" $XDG_DATA_HOME/Box
 
 # Install Vagrant plugins
+echo "Installing Vagrant Parallels plugin..."
 vagrant plugin install vagrant-parallels
 
 # Install Neovim plugins & Language servers
+echo "Installing Neovim plugins & Language servers..."
 npm_config_userconfig=$XDG_CONFIG_HOME/npm/config
 npm_config_cache=$XDG_CACHE_HOME/npm
 
@@ -92,6 +105,7 @@ curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs \
 nvim --headless -u "$XDG_CONFIG_HOME/nvim/lua/plugins.lua" -c "PlugInstall" -c "qall"
 
 # Install Dracula terminal theme
+echo "Installing Dracula them..."
 curl -fLo $XDG_CONFIG_HOME/terminal/Dracula.terminal --create-dirs \
        https://raw.githubusercontent.com/dracula/terminal-app/master/Dracula.terminal
 
@@ -99,6 +113,7 @@ curl -fLo $XDG_CONFIG_HOME/fish/conf.d/dracula.fish --create-dirs \
        https://raw.githubusercontent.com/dracula/fish/master/conf.d/dracula.fish
 
 # Switch to Fish shell
+echo "Setting up Fish shell..."
 sudo chsh -s /usr/local/bin/fish pulecka
 
 echo "set -Ux EDITOR /usr/local/bin/nvim" | /usr/local/bin/fish
@@ -116,4 +131,5 @@ echo "set -Ux VAGRANT_HOME $VAGRANT_HOME" | /usr/local/bin/fish
 echo "set -U ICLOUD_HOME $ICLOUD_HOME" | /usr/local/bin/fish
 echo "set -U BOX_HOME $BOX_HOME" | /usr/local/bin/fish
 
+echo "Mac setup complete."
 open $XDG_CONFIG_HOME/terminal/Dracula.terminal
