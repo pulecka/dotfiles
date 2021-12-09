@@ -1,8 +1,10 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "__BOX__"
+  config.vm.box = "pulecka/macos12"
+  config.vm.box_version = "0.2.0"
+  config.vm.hostname = "__NAME__"
 
-  config.vm.provider :parallels do |vb|
-    vb.name = "__NAME__"
+  config.vm.provider :parallels do |prl|
+    prl.name = "__NAME__"
   end
 
   config.ssh.shell = "zsh -l"

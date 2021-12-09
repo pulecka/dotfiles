@@ -9,17 +9,6 @@ mkdir -p $XDG_CONFIG_HOME
 mkdir -p $XDG_CACHE_HOME
 mkdir -p $XDG_DATA_HOME
 
-# Install Xcode CLI tools
-$(xcode-select --install > /dev/null 2>&1)
-xcode_status=$(xcode-select -p > /dev/null 2>&1; echo $?)
-echo "Waiting for Xcode CLI tools installation\c"
-while [ ! $xcode_status == 0 ]
-do
-  sleep 10
-  xcode_status=$(xcode-select -p > /dev/null 2>&1; echo $?)
-  echo ".\c"
-done
-
 # Install Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -42,11 +31,9 @@ curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs \
 nvim --headless -u "$XDG_CONFIG_HOME/nvim/lua/plugins.lua" -c "PlugInstall" -c "qall"
 
 # Install Dracula terminal theme
-mkdir -p $XDG_DATA_HOME/terminal
 curl -fLo $XDG_DATA_HOME/terminal/Dracula.terminal --create-dirs \
        https://raw.githubusercontent.com/dracula/terminal-app/master/Dracula.terminal
 
-mkdir -p $XDG_CONFIG_HOME/fish/conf.d
 curl -fLo $XDG_CONFIG_HOME/fish/conf.d/dracula.fish --create-dirs \
        https://raw.githubusercontent.com/dracula/fish/master/conf.d/dracula.fish
 
@@ -59,6 +46,9 @@ echo "set -Ux XDG_DATA_HOME $XDG_DATA_HOME" | /usr/local/bin/fish
 
 echo "set -Ux npm_config_userconfig $npm_config_userconfig" | /usr/local/bin/fish
 echo "set -Ux npm_config_cache $npm_config_cache" | /usr/local/bin/fish
+
+echo "set -Ux EDITOR /usr/local/bin/nvim" | /usr/local/bin/fish
+echo "set -Ux SHELL /usr/local/bin/fish" | /usr/local/bin/fish
 
 open $XDG_DATA_HOME/terminal/Dracula.terminal
 

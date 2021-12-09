@@ -1,15 +1,12 @@
 function vagrantvm
   set dir ~/Developer
   set system 'macos'
-  set macos_box 'pulecka/macos12'
-  set ubuntu_box 'bento/ubuntu-21.04'
   set templates $XDG_CONFIG_HOME/vagrant/templates
 
-  function _create_vm -a name dir system box templates
+  function _create_vm -a name dir system templates
     mkdir -p $dir/$name
     cp $templates/$system/Vagrantfile $dir/$name/Vagrantfile
     sed -i '' "s/__NAME__/$name/g" $dir/$name/Vagrantfile
-    sed -i '' "s|__BOX__|$box|g" $dir/$name/Vagrantfile
   end
 
   if test (count $argv) -lt 1
@@ -23,23 +20,11 @@ function vagrantvm
       read -P 'Really need the vm system (macos or ubuntu): ' system
     end
 
-    switch $system
-      case macos
-        set box $macos_box
-      case ubuntu
-        set box $ubuntu_box
-    end
-
-    read -c "$box" -P 'Choose vm base box: ' box
-    while test -z $box
-      read -P 'Really need the vm base box: ' box
-    end
-
-    _create_vm $name $dir $system $box $templates
+    _create_vm $name $dir $system $templates
     return 0
   end
 
-  argparse h/help s/system= b/box= -- $argv
+  argparse h/help s/system= -- $argv
   or return
 
   if set -q _flag_help
@@ -69,16 +54,14 @@ function vagrantvm
     switch $_flag_system
       case macos
         set system macos
-        set box $macos_box
       case ubuntu
         set system ubuntu
-        set box $ubuntu_box
       case '*'
         echo "$_flag_system is not supported system (macos or ubuntu)."
         return 1
     end
   end
 
-  _create_project $name $dir $system $box $templates
+  _create_project $name $dir $system $templates
 end
 

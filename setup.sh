@@ -56,25 +56,28 @@ git clone git@github.com:pulecka/dotfiles.git
 
 # Link Dotfiles
 mkdir -p $XDG_CONFIG_HOME/git
-ln -sv "dotfiles/git/config" $XDG_CONFIG_HOME/git/config
+ln -sv ~/Developer/dotfiles/git/config $XDG_CONFIG_HOME/git/config
 
 mkdir -p $XDG_CONFIG_HOME/fish/conf.d
-ln -sv "dotfiles/fish/config.fish" $XDG_CONFIG_HOME/fish/config.fish
-ln -sv "dotfiles/fish/functions" $XDG_CONFIG_HOME/fish/functions
-ln -sv "dotfiles/vagrant/vagrantvm.fish" $XDG_CONFIG_HOME/fish/conf.d/vagrantvm.fish
+ln -sv ~/Developer/dotfiles/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
+ln -sv ~/Developer/dotfiles/fish/functions $XDG_CONFIG_HOME/fish
+ln -sv ~/Developer/dotfiles/vagrant/vagrantvm.fish $XDG_CONFIG_HOME/fish/conf.d/vagrantvm.fish
 
 mkdir -p $XDG_CONFIG_HOME/tmux/templates
-ln -sv "dotfiles/tmux/tmux.conf" $XDG_CONFIG_HOME/tmux/tmux.conf
-ln -sv "dotfiles/tmux/project.tmux" $XDG_CONFIG_HOME/tmux/templates/project.tmux
+ln -sv ~/Developer/dotfiles/tmux/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
+ln -sv ~/Developer/dotfiles/tmux/project.tmux $XDG_CONFIG_HOME/tmux/templates/project.tmux
 
-ln -sv "dotfiles/nvim" $XDG_CONFIG_HOME/nvim
+ln -sv ~/Developer/dotfiles/nvim $XDG_CONFIG_HOME
 
 mkdir -p $XDG_CONFIG_HOME/vagrant/templates
-ln -sv "dotfiles/vagrant/macos" $XDG_CONFIG_HOME/vagrant/templates/macos
-ln -sv "dotfiles/vagrant/ubuntu" $XDG_CONFIG_HOME/vagrant/templates/ubuntu
+ln -sv ~/Developer/dotfiles/vagrant/macos $XDG_CONFIG_HOME/vagrant/templates
+ln -sv ~/Developer/dotfiles/vagrant/ubuntu $XDG_CONFIG_HOME/vagrant/templates
 
 ln -sv "$ICLOUD_HOME" $XDG_DATA_HOME/iCloud
 ln -sv "$BOX_HOME" $XDG_DATA_HOME/Box
+
+# Install Vagrant plugins
+vagrant plugin install vagrant-parallels
 
 # Install Neovim plugins & Language servers
 npm_config_userconfig=$XDG_CONFIG_HOME/npm/config
@@ -98,13 +101,18 @@ curl -fLo $XDG_CONFIG_HOME/fish/conf.d/dracula.fish --create-dirs \
 # Switch to Fish shell
 sudo chsh -s /usr/local/bin/fish pulecka
 
-echo "set -U XDG_CONFIG_HOME $XDG_CONFIG_HOME" | /usr/local/bin/fish
-echo "set -U XDG_CACHE_HOME $XDG_CACHE_HOME" | /usr/local/bin/fish
-echo "set -U XDG_DATA_HOME $XDG_DATA_HOME" | /usr/local/bin/fish
+echo "set -Ux EDITOR /usr/local/bin/nvim" | /usr/local/bin/fish
+echo "set -Ux SHELL /usr/local/bin/fish" | /usr/local/bin/fish
 
-echo "set -U npm_config_userconfig $npm_config_userconfig" | /usr/local/bin/fish
-echo "set -U npm_config_cache $npm_config_cache" | /usr/local/bin/fish
-echo "set -U VAGRANT_HOME $VAGRANT_HOME" | /usr/local/bin/fish
+echo "set -Ux XDG_CONFIG_HOME $XDG_CONFIG_HOME" | /usr/local/bin/fish
+echo "set -Ux XDG_CACHE_HOME $XDG_CACHE_HOME" | /usr/local/bin/fish
+echo "set -Ux XDG_DATA_HOME $XDG_DATA_HOME" | /usr/local/bin/fish
+
+echo "set -Ux npm_config_userconfig $npm_config_userconfig" | /usr/local/bin/fish
+echo "set -Ux npm_config_cache $npm_config_cache" | /usr/local/bin/fish
+
+echo "set -Ux VAGRANT_HOME $VAGRANT_HOME" | /usr/local/bin/fish
+
 echo "set -U ICLOUD_HOME $ICLOUD_HOME" | /usr/local/bin/fish
 echo "set -U BOX_HOME $BOX_HOME" | /usr/local/bin/fish
 
