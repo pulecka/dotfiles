@@ -44,6 +44,7 @@ echo "set -Ux XDG_CONFIG_HOME $XDG_CONFIG_HOME" | /usr/local/bin/fish
 echo "set -Ux XDG_CACHE_HOME $XDG_CACHE_HOME" | /usr/local/bin/fish
 echo "set -Ux XDG_DATA_HOME $XDG_DATA_HOME" | /usr/local/bin/fish
 
+echo "set -Ux COREPACK_HOME $XDG_CACHE_HOME/node/corepack" | /usr/local/bin/fish
 echo "set -Ux npm_config_userconfig $npm_config_userconfig" | /usr/local/bin/fish
 echo "set -Ux npm_config_cache $npm_config_cache" | /usr/local/bin/fish
 
