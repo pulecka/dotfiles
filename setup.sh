@@ -89,7 +89,9 @@ ln -sv "$BOX_HOME" $XDG_DATA_HOME/Box
 
 # Install Vagrant plugins
 echo "Installing Vagrant Parallels plugin..."
+export GEM_SPEC_CACHE=$XDG_CACHE_HOME/gems/spec
 vagrant plugin install vagrant-parallels
+unset GEM_SPEC_CACHE
 
 # Install Neovim plugins & Language servers
 echo "Installing Neovim plugins & Language servers..."
@@ -128,6 +130,7 @@ echo "set -Ux npm_config_userconfig $npm_config_userconfig" | /usr/local/bin/fis
 echo "set -Ux npm_config_cache $npm_config_cache" | /usr/local/bin/fish
 
 echo "set -Ux VAGRANT_HOME $VAGRANT_HOME" | /usr/local/bin/fish
+echo "set -Ux GEM_SPEC_CACHE $GEM_SPEC_CACHE" | /usr/local/bin/fish
 
 echo "set -U ICLOUD_HOME $ICLOUD_HOME" | /usr/local/bin/fish
 echo "set -U BOX_HOME $BOX_HOME" | /usr/local/bin/fish
