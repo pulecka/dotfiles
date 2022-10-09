@@ -20,6 +20,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
+-- Source control
+Plug 'tpope/vim-fugitive'
+
 -- Language support
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-treesitter/nvim-treesitter'
