@@ -31,4 +31,11 @@ vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevelstart = 20
 
+-- " File explorer
 vim.g.dirvish_mode = ':sort ,^.*[/],'
+
+-- " Status line
+local status_line = require 'statusline.statusline'
+vim.o.laststatus = 3
+vim.o.statusline = "%!luaeval('status_line()')"
+
