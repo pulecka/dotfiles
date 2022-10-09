@@ -1,17 +1,20 @@
 local lspconfig = require 'lspconfig'
+local diagnostic = require('vim.diagnostic')
 require 'lsp.callbacks'
 
 local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local opts = { noremap = true, silent = true }
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+  buf_set_keymap('n', 'gdd', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-  buf_set_keymap('n', 'ga', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>', opts)
+  buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  buf_set_keymap('n', 'gf', '<cmd>lua vim.diagnostic.setqflist()<cr>', opts)
   buf_set_keymap('n', 'fr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>', opts)
   buf_set_keymap('n', 'frr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
   buf_set_keymap('n', 'fd', '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>', opts)
