@@ -3,7 +3,8 @@ local twilight = require 'twilight'
 
 zen_mode.setup {
   window = {
-    height = 0.8, -- height of the Zen window
+    backdrop = 1,
+    height = 1,
     options = {
       number = false,
       relativenumber = false,

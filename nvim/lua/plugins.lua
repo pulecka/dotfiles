@@ -5,6 +5,7 @@ vim.call('plug#begin', install_path)
 
 -- Themes
 Plug('dracula/vim', { as = 'dracula' })
+Plug 'arcticicestudio/nord-vim'
 
 -- Navigation
 Plug 'justinmk/vim-dirvish'

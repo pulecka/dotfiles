@@ -1,4 +1,4 @@
-vim.cmd 'color dracula'
+require 'themes.nord'
 
 vim.o.mouse = 'a'
 vim.o.scrolloff = 1
