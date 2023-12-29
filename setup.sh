@@ -11,10 +11,6 @@ mkdir -p $XDG_CONFIG_HOME
 mkdir -p $XDG_CACHE_HOME
 mkdir -p $XDG_DATA_HOME
 
-VAGRANT_HOME=$XDG_DATA_HOME/vagrant
-ICLOUD_HOME=~/Library/Mobile\ Documents/com\~apple\~CloudDocs
-BOX_HOME=~/Library/CloudStorage/Box-Box
-
 # Install Xcode CLI tools
 echo "Starting Xcode CLI tools installation..."
 $(xcode-select --install > /dev/null 2>&1)
@@ -52,11 +48,11 @@ echo "Installing Homebrew package manager..."
 
 # Install Brew packages
 echo "Installing Homebrew packages..."
-brew install fish git tmux neovim fzf ripgrep node corepack vagrant
+brew install fish git tmux neovim fzf ripgrep node
 
 # Install Brew apps
 echo "Installing Homebrew apps..."
-brew install --cask 1password artpip box-drive cleanmymac firefox little-snitch parallels slack vlc
+brew install --cask 1password 1password-cli box-drive cleanmymac firefox nova sketch slack warp
 
 # Checkout dotfiles
 echo "Checking out dotfile configuration repo..."
@@ -72,26 +68,12 @@ ln -sv ~/Developer/dotfiles/git/config $XDG_CONFIG_HOME/git/config
 mkdir -p $XDG_CONFIG_HOME/fish/conf.d
 ln -sv ~/Developer/dotfiles/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
 ln -sv ~/Developer/dotfiles/fish/functions $XDG_CONFIG_HOME/fish
-ln -sv ~/Developer/dotfiles/vagrant/vagrantvm.fish $XDG_CONFIG_HOME/fish/conf.d/vagrantvm.fish
 
 mkdir -p $XDG_CONFIG_HOME/tmux/templates
 ln -sv ~/Developer/dotfiles/tmux/tmux.conf $XDG_CONFIG_HOME/tmux/tmux.conf
 ln -sv ~/Developer/dotfiles/tmux/project.tmux $XDG_CONFIG_HOME/tmux/templates/project.tmux
 
 ln -sv ~/Developer/dotfiles/nvim $XDG_CONFIG_HOME
-
-mkdir -p $XDG_CONFIG_HOME/vagrant/templates
-ln -sv ~/Developer/dotfiles/vagrant/macos $XDG_CONFIG_HOME/vagrant/templates
-ln -sv ~/Developer/dotfiles/vagrant/ubuntu $XDG_CONFIG_HOME/vagrant/templates
-
-ln -sv "$ICLOUD_HOME" $XDG_DATA_HOME/iCloud
-ln -sv "$BOX_HOME" $XDG_DATA_HOME/Box
-
-# Install Vagrant plugins
-echo "Installing Vagrant Parallels plugin..."
-export GEM_SPEC_CACHE=$XDG_CACHE_HOME/gems/spec
-vagrant plugin install vagrant-parallels
-unset GEM_SPEC_CACHE
 
 # Install Neovim plugins & Language servers
 echo "Installing Neovim plugins & Language servers..."
@@ -105,14 +87,6 @@ curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 nvim --headless -u "$XDG_CONFIG_HOME/nvim/lua/plugins.lua" -c "PlugInstall" -c "qall"
-
-# Install Dracula terminal theme
-echo "Installing Dracula them..."
-curl -fLo $XDG_CONFIG_HOME/terminal/Dracula.terminal --create-dirs \
-       https://raw.githubusercontent.com/dracula/terminal-app/master/Dracula.terminal
-
-curl -fLo $XDG_CONFIG_HOME/fish/conf.d/dracula.fish --create-dirs \
-       https://raw.githubusercontent.com/dracula/fish/master/conf.d/dracula.fish
 
 # Switch to Fish shell
 echo "Setting up Fish shell..."
@@ -129,11 +103,4 @@ echo "set -Ux COREPACK_HOME $XDG_CACHE_HOME/node/corepack" | /usr/local/bin/fish
 echo "set -Ux npm_config_userconfig $npm_config_userconfig" | /usr/local/bin/fish
 echo "set -Ux npm_config_cache $npm_config_cache" | /usr/local/bin/fish
 
-echo "set -Ux VAGRANT_HOME $VAGRANT_HOME" | /usr/local/bin/fish
-echo "set -Ux GEM_SPEC_CACHE $GEM_SPEC_CACHE" | /usr/local/bin/fish
-
-echo "set -U ICLOUD_HOME $ICLOUD_HOME" | /usr/local/bin/fish
-echo "set -U BOX_HOME $BOX_HOME" | /usr/local/bin/fish
-
 echo "Mac setup complete."
-open $XDG_CONFIG_HOME/terminal/Dracula.terminal

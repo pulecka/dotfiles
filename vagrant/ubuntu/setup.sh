@@ -30,10 +30,6 @@ curl -fLo $XDG_DATA_HOME/nvim/site/autoload/plug.vim --create-dirs \
 
 nvim --headless -u "$XDG_CONFIG_HOME/nvim/lua/plugins.lua" -c "PlugInstall" -c "qall"
 
-# Install Dracula shell theme
-curl -fLo $XDG_CONFIG_HOME/fish/conf.d/dracula.fish --create-dirs \
-       https://raw.githubusercontent.com/dracula/fish/master/conf.d/dracula.fish
-
 # Switch to Fish shell
 sudo chsh -s /usr/bin/fish vagrant
 
